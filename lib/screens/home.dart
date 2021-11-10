@@ -4,8 +4,8 @@ import 'package:newsrs/api/wordpress.dart';
 import 'package:newsrs/constants.dart';
 import 'package:newsrs/models/article.dart';
 import 'package:newsrs/widgets/article_card.dart';
+import 'package:newsrs/widgets/custom_drawer.dart';
 import 'package:newsrs/widgets/custom_scaffold.dart';
-import 'package:newsrs/widgets/drawer_button.dart';
 import 'package:newsrs/widgets/floating_app_bar.dart';
 import 'package:newsrs/widgets/theme_toggle_button.dart';
 
@@ -18,6 +18,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late Future<List<Article>> _feedFuture;
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -30,12 +31,21 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
+      scaffoldKey: _scaffoldKey,
+      drawer: CustomDrawer(),
       isAppBarBottom: kIsAppBarBottom,
-      appBar: const FloatingAppBar(
-        title: Text('NewsRS'),
+      appBar: FloatingAppBar(
+        title: const Text('NewsRS'),
         centerTitle: true,
-        leading: DrawerButton(),
-        actions: [ThemeToggleButton()],
+        leading: IconButton(
+          splashRadius:
+              kIconButtonSplashRadiusKoef * Material.defaultSplashRadius,
+          icon: const Icon(Icons.dehaze_rounded),
+          onPressed: () {
+            _scaffoldKey.currentState!.openDrawer();
+          },
+        ),
+        actions: const [ThemeToggleButton()],
       ),
       body: FutureBuilder<List<Article>>(
         future: _feedFuture,
@@ -48,9 +58,11 @@ class _HomePageState extends State<HomePage> {
             return ListView(
               shrinkWrap: true,
               physics: const BouncingScrollPhysics(),
-              children: snapshot.data!.map<Widget>(
-                (e) => ArticleCard(article: e),
-              ).toList()
+              children: snapshot.data!
+                  .map<Widget>(
+                    (e) => ArticleCard(article: e),
+                  )
+                  .toList()
                 ..insert(
                   kIsAppBarBottom ? snapshot.data!.length : 0,
                   const SizedBox(

@@ -18,8 +18,21 @@ const kArticleCardPadding = 8.0;
 const kArticleCardImageFlex = 2;
 const kArticleCardTextFlex = 5;
 
+// IconButton
+const kIconButtonSplashRadiusKoef = 0.6;
+
+// CustomDrawer
+const kCustomDrawerMargin = kFloatingAppBarMargin;
+
+// TagChip
+const kTagChipBorderRadius = kBorderRadius / 2.2;
+const kTagChipHPadding = 2.0;
+const kTagChipVPadding = 1.0;
+const kTagChipMargin = 1.0;
+const kTagChipTextScaleFactor = 1.0;
+
 // ThemeToggleButton
-const kThemeToggleButtonSplashRadiusKoef = 0.5;
+const kThemeToggleButtonSplashRadiusKoef = kIconButtonSplashRadiusKoef;
 const kThemeToggleButtonIcons = [
   Icons.light_mode_rounded,
   Icons.dark_mode_rounded,
