@@ -65,31 +65,29 @@ class FloatingAppBar extends StatefulWidget implements PreferredSizeWidget {
 class _FloatingAppBarState extends State<FloatingAppBar> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        height: kToolbarHeight,
-        margin: const EdgeInsets.all(kFloatingAppBarMargin),
-        child: AppBar(
-          leading: widget.leading,
-          title: widget.title,
-          actions: widget.actions,
-          flexibleSpace: widget.flexibleSpace,
-          bottom: widget.bottom,
-          elevation: widget.elevation,
-          shadowColor: widget.shadowColor,
-          shape: widget.shape,
-          backgroundColor: widget.backgroundColor,
-          foregroundColor: widget.foregroundColor,
-          iconTheme: widget.iconTheme,
-          actionsIconTheme: widget.actionsIconTheme,
-          centerTitle: widget.centerTitle,
-          titleSpacing: widget.titleSpacing,
-          toolbarHeight: widget.toolbarHeight,
-          leadingWidth: widget.leadingWidth,
-          toolbarTextStyle: widget.toolbarTextStyle,
-          titleTextStyle: widget.titleTextStyle,
-          systemOverlayStyle: widget.systemOverlayStyle,
-        ),
+    return Container(
+      height: kToolbarHeight,
+      margin: const EdgeInsets.all(kFloatingAppBarMargin),
+      child: AppBar(
+        leading: widget.leading,
+        title: widget.title,
+        actions: widget.actions,
+        flexibleSpace: widget.flexibleSpace,
+        bottom: widget.bottom,
+        elevation: widget.elevation,
+        shadowColor: widget.shadowColor,
+        shape: widget.shape,
+        backgroundColor: widget.backgroundColor,
+        foregroundColor: widget.foregroundColor,
+        iconTheme: widget.iconTheme,
+        actionsIconTheme: widget.actionsIconTheme,
+        centerTitle: widget.centerTitle,
+        titleSpacing: widget.titleSpacing,
+        toolbarHeight: widget.toolbarHeight,
+        leadingWidth: widget.leadingWidth,
+        toolbarTextStyle: widget.toolbarTextStyle,
+        titleTextStyle: widget.titleTextStyle,
+        systemOverlayStyle: widget.systemOverlayStyle,
       ),
     );
   }

@@ -5,6 +5,7 @@ import 'package:newsrs/constants.dart';
 import 'package:newsrs/models/article.dart';
 import 'package:newsrs/widgets/article_card.dart';
 import 'package:newsrs/widgets/custom_scaffold.dart';
+import 'package:newsrs/widgets/drawer_button.dart';
 import 'package:newsrs/widgets/floating_app_bar.dart';
 import 'package:newsrs/widgets/theme_toggle_button.dart';
 
@@ -29,9 +30,11 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
+      isAppBarBottom: kIsAppBarBottom,
       appBar: const FloatingAppBar(
         title: Text('NewsRS'),
         centerTitle: true,
+        leading: DrawerButton(),
         actions: [ThemeToggleButton()],
       ),
       body: FutureBuilder<List<Article>>(
@@ -45,13 +48,11 @@ class _HomePageState extends State<HomePage> {
             return ListView(
               shrinkWrap: true,
               physics: const BouncingScrollPhysics(),
-              children: snapshot.data!
-                  .map<Widget>(
-                    (e) => ArticleCard(article: e),
-                  )
-                  .toList()
+              children: snapshot.data!.map<Widget>(
+                (e) => ArticleCard(article: e),
+              ).toList()
                 ..insert(
-                  0,
+                  kIsAppBarBottom ? snapshot.data!.length : 0,
                   const SizedBox(
                     height: kToolbarHeight + 2 * kFloatingAppBarMargin,
                   ),

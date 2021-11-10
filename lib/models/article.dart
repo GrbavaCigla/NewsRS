@@ -1,3 +1,5 @@
+import 'package:html_unescape/html_unescape_small.dart';
+
 import 'package:newsrs/utils/image_search.dart';
 
 class Article {
@@ -19,21 +21,13 @@ class Article {
     this.url,
   });
 
+  // TODO: Add author
   Article.fromJson(Map<String, dynamic> json)
-      : title = json['title']['rendered'],
+      : title = HtmlUnescape().convert(json['title']['rendered']),
         date = DateTime.parse(json['date']),
         url = Uri.parse(json['link']),
         imageUrl = getImageUrlFromJson(json),
         text = json['content']['rendered'];
-
-    
-    // TODO: Add author
-  Article.fromYoastJson(Map<String, dynamic> json) : 
-        title = json['yoast_head_json']['title'],
-        date = DateTime.parse(json['date']),
-        text = json['content']['rendered'],
-        imageUrl = getImageUrlFromJson(json),
-        url = Uri.parse(json['link']);
 
   Map<String, dynamic> toJson() => {
         'title': title,

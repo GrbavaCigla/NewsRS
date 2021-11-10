@@ -19,11 +19,7 @@ Future<List<Article>> getPosts(String website) async {
 
   for (var jsonArticle in json) {
     Article article;
-    if (jsonArticle['yoast_head_json'] == null) {
-      article = Article.fromJson(jsonArticle);
-    } else {
-      article = Article.fromYoastJson(jsonArticle);
-    }
+    article = Article.fromJson(jsonArticle);
     article.source = url.origin;
 
     articles.add(article);

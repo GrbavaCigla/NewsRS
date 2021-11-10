@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:newsrs/constants.dart';
 
 class CustomScaffold extends StatelessWidget {
+  final bool isAppBarBottom;
   final Widget? body;
   final Widget? appBar;
 
@@ -10,6 +11,7 @@ class CustomScaffold extends StatelessWidget {
     Key? key,
     this.body,
     this.appBar,
+    this.isAppBarBottom = false,
   }) : super(key: key);
 
   @override
@@ -17,6 +19,8 @@ class CustomScaffold extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Stack(
+          alignment:
+              isAppBarBottom ? Alignment.bottomCenter : Alignment.topCenter,
           children: [
             Container(
               margin: const EdgeInsets.symmetric(horizontal: kPageInset),

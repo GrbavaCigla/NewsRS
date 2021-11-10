@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 // General
 const kBorderRadius = 12.0;
 const kPageInset = kFloatingAppBarMargin - kCardMargin;
+const kIsAppBarBottom = true;
 
 // FloatingAppBar
 const kFloatingAppBarMargin = 16.0;
