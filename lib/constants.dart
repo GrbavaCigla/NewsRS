@@ -4,6 +4,11 @@ import 'package:flutter/material.dart';
 const kBorderRadius = 12.0;
 const kPageInset = kFloatingAppBarMargin - kCardMargin;
 const kIsAppBarBottom = true;
+const kDefaultSources = [
+  "https://www.krik.rs",
+  "https://www.istinomer.rs",
+  "https://www.nova.rs",
+];
 
 // FloatingAppBar
 const kFloatingAppBarMargin = 16.0;
@@ -18,11 +23,30 @@ const kArticleCardPadding = 8.0;
 const kArticleCardImageFlex = 2;
 const kArticleCardTextFlex = 5;
 
+// CardTiles
+const kCardTileBorderRadius = kCardBorderRadius;
+
+// DrawerSection
+const kDrawerSectionPadding = kArticleCardPadding;
+
 // IconButton
-const kIconButtonSplashRadiusKoef = 0.6;
+const kIconButtonSplashRadius = 0.6 * Material.defaultSplashRadius;
 
 // CustomDrawer
 const kCustomDrawerMargin = kFloatingAppBarMargin;
+
+// SourceCard
+const kSourceCardSplashRadius = kIconButtonSplashRadius;
+
+// Dialog
+const kDialogBorderRadius = kBorderRadius;
+
+// AddSourceDialog
+const kAddSourceDialogBorderRadius = kDialogBorderRadius;
+
+// Button
+const kButtonBorderRadius = kBorderRadius;
+const kButtonPadding = EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0);
 
 // TagChip
 const kTagChipBorderRadius = kBorderRadius / 2.2;
@@ -32,7 +56,7 @@ const kTagChipMargin = 1.0;
 const kTagChipTextScaleFactor = 1.0;
 
 // ThemeToggleButton
-const kThemeToggleButtonSplashRadiusKoef = kIconButtonSplashRadiusKoef;
+const kThemeToggleButtonSplashRadius = kIconButtonSplashRadius;
 const kThemeToggleButtonIcons = [
   Icons.light_mode_rounded,
   Icons.dark_mode_rounded,

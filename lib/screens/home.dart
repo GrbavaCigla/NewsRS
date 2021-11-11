@@ -4,9 +4,10 @@ import 'package:newsrs/api/wordpress.dart';
 import 'package:newsrs/constants.dart';
 import 'package:newsrs/models/article.dart';
 import 'package:newsrs/widgets/article_card.dart';
-import 'package:newsrs/widgets/custom_drawer.dart';
+import 'package:newsrs/widgets/newsrs_drawer.dart';
 import 'package:newsrs/widgets/custom_scaffold.dart';
 import 'package:newsrs/widgets/floating_app_bar.dart';
+import 'package:newsrs/widgets/settings.dart';
 import 'package:newsrs/widgets/theme_toggle_button.dart';
 
 class HomePage extends StatefulWidget {
@@ -21,25 +22,23 @@ class _HomePageState extends State<HomePage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
-  void initState() {
-    // TODO: Use mixed sources instead
-    _feedFuture = getPosts('https://www.nova.rs');
-
-    super.initState();
+  void didChangeDependencies() {
+    _feedFuture = getPostsFromSources(DynamicSettings.of(context).sources);
+    super.didChangeDependencies();
   }
 
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
       scaffoldKey: _scaffoldKey,
-      drawer: CustomDrawer(),
-      isAppBarBottom: kIsAppBarBottom,
+      drawer: const NewsRSDrawer(),
+      isAppBarBottom: DynamicSettings.of(context).isAppBarBottom,
       appBar: FloatingAppBar(
         title: const Text('NewsRS'),
         centerTitle: true,
         leading: IconButton(
           splashRadius:
-              kIconButtonSplashRadiusKoef * Material.defaultSplashRadius,
+              kIconButtonSplashRadius,
           icon: const Icon(Icons.dehaze_rounded),
           onPressed: () {
             _scaffoldKey.currentState!.openDrawer();
@@ -64,7 +63,9 @@ class _HomePageState extends State<HomePage> {
                   )
                   .toList()
                 ..insert(
-                  kIsAppBarBottom ? snapshot.data!.length : 0,
+                  DynamicSettings.of(context).isAppBarBottom
+                      ? snapshot.data!.length
+                      : 0,
                   const SizedBox(
                     height: kToolbarHeight + 2 * kFloatingAppBarMargin,
                   ),

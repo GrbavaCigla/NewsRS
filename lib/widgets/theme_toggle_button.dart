@@ -14,8 +14,7 @@ class _ThemeToggleButtonState extends State<ThemeToggleButton> {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      splashRadius:
-          Material.defaultSplashRadius * kThemeToggleButtonSplashRadiusKoef,
+      splashRadius: kThemeToggleButtonSplashRadius,
       onPressed: () {
         AdaptiveTheme.of(context).toggleThemeMode();
         setState(() {});

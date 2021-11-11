@@ -2,7 +2,10 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
+import 'package:newsrs/api/exception.dart';
 import 'package:newsrs/models/article.dart';
+
+// TODO: Cache everything
 
 Future<String?> getUser(String website, int? id) async {
   if (id == null) {
@@ -13,8 +16,7 @@ Future<String?> getUser(String website, int? id) async {
   var response = await http.get(url);
 
   if (response.statusCode != 200) {
-    // TODO: Make this better
-    return Future.error("Status code not 200");
+    return Future.error(StatusCodeNode200());
   }
 
   return Future.value(jsonDecode(response.body)["name"]);
@@ -29,8 +31,7 @@ Future<String?> getTag(String website, int? id) async {
   var response = await http.get(url);
 
   if (response.statusCode != 200) {
-    // TODO: Make this better
-    return Future.error("Status code not 200");
+    return Future.error(StatusCodeNode200());
   }
 
   return Future.value(jsonDecode(response.body)["name"]);
@@ -41,8 +42,7 @@ Future<List<Article>> getPosts(String website) async {
   var response = await http.get(url);
 
   if (response.statusCode != 200) {
-    // TODO: Make this better
-    return Future.error("Status code not 200");
+    return Future.error(StatusCodeNode200());
   }
 
   var json = jsonDecode(response.body);
@@ -76,4 +76,12 @@ Future<List<Article>> getPosts(String website) async {
   }
 
   return Future.value(articles);
+}
+
+Future<List<Article>> getPostsFromSources(List<String> sources) async {
+  var requests = await Future.wait(sources.map((e) => getPosts(e)));
+  var flat = requests.expand((i) => i).toList();
+  flat.sort((a, b) => b.date!.compareTo(a.date!));
+
+  return Future.value(flat);
 }

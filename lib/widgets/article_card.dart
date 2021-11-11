@@ -59,6 +59,7 @@ class ArticleCard extends StatelessWidget {
                       article.title ?? 'Unknown title',
                       style: Theme.of(context).textTheme.headline6,
                     ),
+                    // TODO: Wrap this text
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

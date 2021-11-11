@@ -23,7 +23,6 @@ class Article {
     this.url,
   });
 
-  // TODO: Add author
   Article.fromJson(Map<String, dynamic> json)
       : title = HtmlUnescape().convert(json['title']['rendered']),
         author = json['author'].toString(),
