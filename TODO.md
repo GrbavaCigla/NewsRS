@@ -1,9 +1,12 @@
 TODO:
-- Add icons to source cards
 - Make `sources` type of Set<Uri>
+- Add icons to source cards
 - Article body
 - Persistant settings
-- Splash
+- Pull to refresh
+- Infinite scroll
+
+- ~~Splash~~
 
 Future plans:
 - Local on-device ML to classify clickbaits (opt-in)
