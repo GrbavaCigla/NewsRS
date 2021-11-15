@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'package:tuple/tuple.dart';
+
 import 'package:newsrs/api/wordpress.dart';
 import 'package:newsrs/constants.dart';
 import 'package:newsrs/models/article.dart';
+import 'package:newsrs/widgets/error_card.dart';
 import 'package:newsrs/widgets/article_card.dart';
 import 'package:newsrs/screens/home/drawer.dart';
 import 'package:newsrs/widgets/custom_scaffold.dart';
@@ -18,12 +21,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  late Future<List<Article>> _feedFuture;
+  late Future<Tuple2<List<Article>, List<dynamic>>> _feedFuture;
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void didChangeDependencies() {
-    _feedFuture = getPostsFromSources(DynamicSettings.of(context).sources.toList());
+    _feedFuture =
+        getPostsFromSources(DynamicSettings.of(context).sources.toList());
     super.didChangeDependencies();
   }
 
@@ -37,8 +41,7 @@ class _HomePageState extends State<HomePage> {
         title: const Text('NewsRS'),
         centerTitle: true,
         leading: IconButton(
-          splashRadius:
-              kIconButtonSplashRadius,
+          splashRadius: kIconButtonSplashRadius,
           icon: const Icon(Icons.dehaze_rounded),
           onPressed: () {
             _scaffoldKey.currentState!.openDrawer();
@@ -46,7 +49,7 @@ class _HomePageState extends State<HomePage> {
         ),
         actions: const [ThemeToggleButton()],
       ),
-      body: FutureBuilder<List<Article>>(
+      body: FutureBuilder<Tuple2<List<Article>, List<dynamic>>>(
         future: _feedFuture,
         builder: (context, snapshot) {
           if (snapshot.hasError) {
@@ -57,18 +60,22 @@ class _HomePageState extends State<HomePage> {
             return ListView(
               shrinkWrap: true,
               physics: const BouncingScrollPhysics(),
-              children: snapshot.data!
+              children: snapshot.data!.item1
                   .map<Widget>(
                     (e) => ArticleCard(article: e),
                   )
                   .toList()
                 ..insert(
                   DynamicSettings.of(context).isAppBarBottom
-                      ? snapshot.data!.length
+                      ? snapshot.data!.item1.length
                       : 0,
                   const SizedBox(
                     height: kToolbarHeight + 2 * kFloatingAppBarMargin,
                   ),
+                )
+                ..insertAll(
+                  0,
+                  snapshot.data!.item2.map((e) => ErrorCard(error: e)),
                 ),
             );
           } else {

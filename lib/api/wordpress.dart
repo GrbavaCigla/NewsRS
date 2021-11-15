@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:tuple/tuple.dart';
 
 import 'package:newsrs/api/exception.dart';
 import 'package:newsrs/models/article.dart';
@@ -39,7 +40,13 @@ Future<String?> getTag(String website, int? id) async {
 
 Future<List<Article>> getPosts(String website) async {
   var url = Uri.parse(website + '/wp-json/wp/v2/posts');
-  var response = await http.get(url);
+
+  http.Response? response;
+  try {
+    response = await http.get(url);
+  } catch (exception) {
+    return Future.error(exception);
+  }
 
   if (response.statusCode != 200) {
     return Future.error(StatusCodeNode200());
@@ -57,14 +64,15 @@ Future<List<Article>> getPosts(String website) async {
     article.source = url.host;
 
     if (!authors.containsKey(article.author)) {
-      authors[article.author] = await getUser(website, int.tryParse(article.author!));
+      authors[article.author] =
+          await getUser(website, int.tryParse(article.author!));
     }
     article.author = authors[article.author];
 
     var articleTags = List.from(article.categories);
     article.categories.clear();
 
-    for(var tag in articleTags) {
+    for (var tag in articleTags) {
       if (!tags.containsKey(tag)) {
         tags[tag] = await getTag(website, int.tryParse(tag));
       }
@@ -78,10 +86,24 @@ Future<List<Article>> getPosts(String website) async {
   return Future.value(articles);
 }
 
-Future<List<Article>> getPostsFromSources(List<Uri> sources) async {
-  var requests = await Future.wait(sources.map((e) => getPosts(e.toString())));
+Future<Tuple2<List<Article>, List<dynamic>>> getPostsFromSources(List<Uri> sources) async {
+  var errors = [];
+
+  var requests = await Future.wait(
+    sources.map(
+      (e) => getPosts(e.toString()).catchError(
+        (err) {
+          errors.add(err);
+          return <Article>[];
+        },
+      ),
+    ),
+  );
   var flat = requests.expand((i) => i).toList();
   flat.sort((a, b) => b.date!.compareTo(a.date!));
+  if(sources.length == errors.length) {
+    return Future.error(errors);
+  }
 
-  return Future.value(flat);
+  return Future.value(Tuple2(flat, errors));
 }
