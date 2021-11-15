@@ -78,8 +78,8 @@ Future<List<Article>> getPosts(String website) async {
   return Future.value(articles);
 }
 
-Future<List<Article>> getPostsFromSources(List<String> sources) async {
-  var requests = await Future.wait(sources.map((e) => getPosts(e)));
+Future<List<Article>> getPostsFromSources(List<Uri> sources) async {
+  var requests = await Future.wait(sources.map((e) => getPosts(e.toString())));
   var flat = requests.expand((i) => i).toList();
   flat.sort((a, b) => b.date!.compareTo(a.date!));
 

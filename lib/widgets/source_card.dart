@@ -5,7 +5,7 @@ import 'package:newsrs/widgets/settings.dart';
 import 'package:newsrs/widgets/tiles/card_list_tile.dart';
 
 class SourceCard extends StatelessWidget {
-  final String source;
+  final Uri source;
 
   const SourceCard({
     Key? key,
@@ -15,12 +15,12 @@ class SourceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: Optimize this
-    List<String> newSource = List.from(DynamicSettings.of(context).sources);
+    Set<Uri> newSource = Set.from(DynamicSettings.of(context).sources);
     newSource.remove(source);
 
     return CardListTile(
       color: Theme.of(context).backgroundColor,
-      title: Text(source),
+      title: Text(source.host),
       trailing: IconButton(
         splashRadius: kSourceCardSplashRadius,
         color: Theme.of(context).colorScheme.error,

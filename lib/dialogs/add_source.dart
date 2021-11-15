@@ -24,7 +24,9 @@ class _AddSourceDialogState extends State<AddSourceDialog> {
               ? "Field cannot be empty"
               : Uri.tryParse(source) == null
                   ? "Not valid URL"
-                  : null,
+                  : Uri.parse(source).isAbsolute
+                      ? null
+                      : "Not a valid URL",
         ),
       ),
       actions: [
@@ -36,11 +38,14 @@ class _AddSourceDialogState extends State<AddSourceDialog> {
           onPressed: () {
             // TODO: Optimize this
             if (_formKey.currentState!.validate()) {
-              List<String> newSources =
-                  List.from(DynamicSettings.of(context).sources);
-              newSources.add(_textController.text);
+              Set<Uri> newSources =
+                  Set.from(DynamicSettings.of(context).sources);
+
+              newSources.add(Uri.parse(_textController.text));
 
               DynamicSettings.of(context).sources = newSources;
+              print(newSources);
+              Navigator.of(context).pop();
             }
           },
           child: const Text("Ok"),

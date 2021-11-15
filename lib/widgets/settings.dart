@@ -20,16 +20,16 @@ class DynamicSettings extends StatefulWidget {
 
 class _DynamicSettingsState extends State<DynamicSettings> {
   bool _isAppBarBottom = kIsAppBarBottom;
-  List<String> _sources = kDefaultSources;
+  Set<Uri> _sources = kDefaultSources.map((e) => Uri.parse(e)).toSet();
 
   bool get isAppBarBottom => _isAppBarBottom;
-  List<String> get sources => _sources;
+  Set<Uri> get sources => _sources;
 
   set isAppBarBottom(bool newValue) => setState(
         () => _isAppBarBottom = newValue,
       );
 
-  set sources(List<String> newValue) => setState(
+  set sources(Set<Uri> newValue) => setState(
         () => _sources = newValue,
       );
 
@@ -47,7 +47,7 @@ class _DynamicSettingsState extends State<DynamicSettings> {
 class SettingsData extends InheritedWidget {
   final bool isAppBarBottom;
   final _DynamicSettingsState state;
-  final List<String> sources;
+  final Set<Uri> sources;
 
   const SettingsData({
     Key? key,

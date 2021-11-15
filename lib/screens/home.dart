@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void didChangeDependencies() {
-    _feedFuture = getPostsFromSources(DynamicSettings.of(context).sources);
+    _feedFuture = getPostsFromSources(DynamicSettings.of(context).sources.toList());
     super.didChangeDependencies();
   }
 
