@@ -28,7 +28,12 @@ class NewsRSDrawer extends StatelessWidget {
                   title: "Sources",
                   children: DynamicSettings.of(context)
                       .sources
-                      .map<Widget>((e) => SourceCard(source: e))
+                      .map<Widget>(
+                        (e) => SourceCard(
+                          source: e,
+                          
+                        ),
+                      )
                       .toList()
                     ..add(
                       CardListTile(

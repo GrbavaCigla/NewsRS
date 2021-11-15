@@ -4,7 +4,7 @@ import 'package:newsrs/api/wordpress.dart';
 import 'package:newsrs/constants.dart';
 import 'package:newsrs/models/article.dart';
 import 'package:newsrs/widgets/article_card.dart';
-import 'package:newsrs/widgets/newsrs_drawer.dart';
+import 'package:newsrs/screens/home/drawer.dart';
 import 'package:newsrs/widgets/custom_scaffold.dart';
 import 'package:newsrs/widgets/floating_app_bar.dart';
 import 'package:newsrs/widgets/settings.dart';

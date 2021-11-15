@@ -34,9 +34,12 @@ const kIconButtonSplashRadius = 0.6 * Material.defaultSplashRadius;
 
 // CustomDrawer
 const kCustomDrawerMargin = kFloatingAppBarMargin;
+const kSourceCardImageSize = 24.0;
 
 // SourceCard
 const kSourceCardSplashRadius = kIconButtonSplashRadius;
+const kSourceCardBorderRadius = kBorderRadius;
+const kSourceCardHGap = 0.0;
 
 // Dialog
 const kDialogBorderRadius = kBorderRadius;
