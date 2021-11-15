@@ -25,7 +25,7 @@ class NewsRSDrawer extends StatelessWidget {
             child: ListView(
               children: [
                 DrawerSection(
-                  title: "Sources",
+                  title: 'Sources',
                   children: DynamicSettings.of(context)
                       .sources
                       .map<Widget>(
@@ -43,7 +43,7 @@ class NewsRSDrawer extends StatelessWidget {
                         ),
                         color: Theme.of(context).colorScheme.primary,
                         title: Text(
-                          "Add source",
+                          'Add source',
                           style: TextStyle(
                             color: Theme.of(context).colorScheme.onPrimary,
                           ),
@@ -56,11 +56,11 @@ class NewsRSDrawer extends StatelessWidget {
                     ),
                 ),
                 DrawerSection(
-                  title: "Settings",
+                  title: 'Settings',
                   children: [
                     CardSwitchListTile(
                       color: Theme.of(context).backgroundColor,
-                      title: const Text("Bottom app bar"),
+                      title: const Text('Bottom app bar'),
                       value: DynamicSettings.of(context).isAppBarBottom,
                       onChanged: (value) =>
                           DynamicSettings.of(context).isAppBarBottom = value,

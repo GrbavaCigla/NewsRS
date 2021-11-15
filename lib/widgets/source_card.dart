@@ -27,7 +27,7 @@ class SourceCard extends StatelessWidget {
       dense: true,
       leading: ClipRRect(
         child: CachedNetworkImage(
-          imageUrl: source.toString() + "/favicon.ico",
+          imageUrl: source.toString() + '/favicon.ico',
           height: kSourceCardImageSize,
           width: kSourceCardImageSize,
           placeholder: (context, _) => const CircularProgressIndicator(),

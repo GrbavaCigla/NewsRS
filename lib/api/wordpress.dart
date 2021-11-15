@@ -19,7 +19,7 @@ Future<String?> getUser(String website, int? id) async {
     return Future.error(StatusCodeNode200());
   }
 
-  return Future.value(jsonDecode(response.body)["name"]);
+  return Future.value(jsonDecode(response.body)['name']);
 }
 
 Future<String?> getTag(String website, int? id) async {
@@ -34,7 +34,7 @@ Future<String?> getTag(String website, int? id) async {
     return Future.error(StatusCodeNode200());
   }
 
-  return Future.value(jsonDecode(response.body)["name"]);
+  return Future.value(jsonDecode(response.body)['name']);
 }
 
 Future<List<Article>> getPosts(String website) async {

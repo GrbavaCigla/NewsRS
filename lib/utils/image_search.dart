@@ -14,7 +14,7 @@ Uri? getImageUrlFromJson(dynamic json) {
       }
     }
   } else {
-    var pieces = json.toString().split(".");
+    var pieces = json.toString().split('.');
 
     if (['jpeg', 'png', 'gif', 'jpg'].contains(
       pieces[pieces.length - 1],

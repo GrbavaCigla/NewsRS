@@ -15,24 +15,24 @@ class _AddSourceDialogState extends State<AddSourceDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: const Text("Add source"),
+      title: const Text('Add source'),
       content: Form(
         key: _formKey,
         child: TextFormField(
           controller: _textController,
           validator: (String? source) => source == null
-              ? "Field cannot be empty"
+              ? 'Field cannot be empty'
               : Uri.tryParse(source) == null
-                  ? "Not valid URL"
+                  ? 'Not valid URL'
                   : Uri.parse(source).isAbsolute
                       ? null
-                      : "Not a valid URL",
+                      : 'Not a valid URL',
         ),
       ),
       actions: [
         TextButton(
           onPressed: () => Navigator.of(context).pop(),
-          child: const Text("Cancel"),
+          child: const Text('Cancel'),
         ),
         ElevatedButton(
           onPressed: () {
@@ -44,11 +44,10 @@ class _AddSourceDialogState extends State<AddSourceDialog> {
               newSources.add(Uri.parse(_textController.text));
 
               DynamicSettings.of(context).sources = newSources;
-              print(newSources);
               Navigator.of(context).pop();
             }
           },
-          child: const Text("Ok"),
+          child: const Text('Ok'),
         ),
       ],
     );

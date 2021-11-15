@@ -5,9 +5,9 @@ const kBorderRadius = 12.0;
 const kPageInset = kFloatingAppBarMargin - kCardMargin;
 const kIsAppBarBottom = true;
 const kDefaultSources = [
-  "https://www.krik.rs",
-  "https://www.istinomer.rs",
-  "https://www.nova.rs",
+  'https://www.krik.rs',
+  'https://www.istinomer.rs',
+  'https://www.nova.rs',
 ];
 
 // FloatingAppBar
@@ -57,6 +57,11 @@ const kTagChipHPadding = 2.0;
 const kTagChipVPadding = 1.0;
 const kTagChipMargin = 1.0;
 const kTagChipTextScaleFactor = 1.0;
+
+// ArticlePage
+const kArticlePageCardPadding = 8.0;
+const kArticlePageImageBorderRadius = kBorderRadius;
+const kArticlePageCardTopSpacing = 12.0;
 
 // ThemeToggleButton
 const kThemeToggleButtonSplashRadius = kIconButtonSplashRadius;

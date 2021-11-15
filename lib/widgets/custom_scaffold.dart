@@ -30,6 +30,7 @@ class CustomScaffold extends StatelessWidget {
           children: [
             Container(
               margin: const EdgeInsets.symmetric(horizontal: kPageInset),
+              height: MediaQuery.of(context).size.height,
               child: body ?? Container(),
             ),
             appBar ?? Container()

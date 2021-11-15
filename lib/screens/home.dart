@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> {
         builder: (context, snapshot) {
           if (snapshot.hasError) {
             return Center(
-              child: Text("Something went wrong: ${snapshot.error}"),
+              child: Text('Something went wrong: ${snapshot.error}'),
             );
           } else if (snapshot.hasData) {
             return ListView(
