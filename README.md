@@ -1,16 +1,13 @@
-# newsrs
+# NewsRS
 
-A new Flutter project.
+News app written in Dart/Flutter with configurable sources.
 
-## Getting Started
+Majority of news websites are using Wordpress (at least in Serbia), so I used Wordpress API to display the news. News sources are configurable through settings.
 
-This project is a starting point for a Flutter application.
+Colors by Nord.
 
-A few resources to get you started if this is your first Flutter project:
+## Screenshots
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![1](https://user-images.githubusercontent.com/23121814/147358882-69ce5b0a-71c8-42e1-a127-e6fd54d09898.png)
+![2](https://user-images.githubusercontent.com/23121814/147358885-e464bc4c-8c59-4f2a-af43-38fcfaba9528.png)
+![3](https://user-images.githubusercontent.com/23121814/147358887-2984b503-2f35-4d10-935e-9d4b4ce87cef.png)
