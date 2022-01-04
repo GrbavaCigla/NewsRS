@@ -6,6 +6,11 @@ TODO:
 - Add source dialog duplicate error UI
 - Better source validation
 - Error messages
+- Save post
+- Progress bar
+- Skeleton loading
+- Filter by category, author, source...
+- Prefetching some of sources date (tags...)
 
 - ~~Better error handling~~
 - ~~Article body~~
