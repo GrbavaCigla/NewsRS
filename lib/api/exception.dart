@@ -1,4 +1,4 @@
-class StatusCodeNode200 implements Exception {
+class StatusCodeNot200 implements Exception {
   String? message;
-  StatusCodeNode200({this.message});
+  StatusCodeNot200({this.message});
 }

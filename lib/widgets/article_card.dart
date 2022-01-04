@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 import 'package:newsrs/constants.dart';
 import 'package:newsrs/models/article.dart';
 import 'package:newsrs/screens/article.dart';
 import 'package:newsrs/widgets/tag_chip.dart';
 
+// TODO: Make this more minimalistic
 class ArticleCard extends StatelessWidget {
   final Article article;
 
@@ -35,10 +37,13 @@ class ArticleCard extends StatelessWidget {
                         child: Container(
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(
-                                kCardBorderRadius - kCardMargin),
+                              kCardBorderRadius - kCardMargin,
+                            ),
                             image: DecorationImage(
                               fit: BoxFit.cover,
-                              image: CachedNetworkImageProvider(article.imageUrl.toString()),
+                              image: CachedNetworkImageProvider(
+                                article.imageUrl.toString(),
+                              ),
                             ),
                           ),
                         ),
@@ -78,9 +83,13 @@ class ArticleCard extends StatelessWidget {
                             style: Theme.of(context).textTheme.bodyText2,
                           ),
                           Text(
+                            // TODO: Add language option in settings and use it here
                             article.date == null
                                 ? ''
-                                : '${article.date!.day}/${article.date!.month}/${article.date!.year}',
+                                : timeago.format(
+                                    article.date!,
+                                    locale: "en_short",
+                                  ),
                             textAlign: TextAlign.end,
                             style: Theme.of(context).textTheme.bodyText2,
                           ),

@@ -11,6 +11,8 @@ TODO:
 - Skeleton loading
 - Filter by category, author, source...
 - Prefetching some of sources date (tags...)
+- Localization
+- Better article cards
 
 - ~~Better error handling~~
 - ~~Article body~~

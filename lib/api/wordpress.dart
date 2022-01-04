@@ -17,7 +17,7 @@ Future<String?> getUser(String website, int? id) async {
   var response = await http.get(url);
 
   if (response.statusCode != 200) {
-    return Future.error(StatusCodeNode200());
+    return Future.error(StatusCodeNot200());
   }
 
   return Future.value(jsonDecode(response.body)['name']);
@@ -32,7 +32,7 @@ Future<String?> getTag(String website, int? id) async {
   var response = await http.get(url);
 
   if (response.statusCode != 200) {
-    return Future.error(StatusCodeNode200());
+    return Future.error(StatusCodeNot200());
   }
 
   return Future.value(jsonDecode(response.body)['name']);
@@ -49,7 +49,7 @@ Future<List<Article>> getPosts(String website) async {
   }
 
   if (response.statusCode != 200) {
-    return Future.error(StatusCodeNode200());
+    return Future.error(StatusCodeNot200());
   }
 
   var json = jsonDecode(response.body);
@@ -64,20 +64,29 @@ Future<List<Article>> getPosts(String website) async {
     article.source = url.host;
 
     if (!authors.containsKey(article.author)) {
-      authors[article.author] =
-          await getUser(website, int.tryParse(article.author!));
+      try {
+        authors[article.author] =
+            await getUser(website, int.tryParse(article.author!));
+      } catch (err) {
+        authors[article.author] = null;
+      }
+      article.author = authors[article.author];
     }
-    article.author = authors[article.author];
 
     var articleTags = List.from(article.categories);
     article.categories.clear();
 
     for (var tag in articleTags) {
       if (!tags.containsKey(tag)) {
-        tags[tag] = await getTag(website, int.tryParse(tag));
+        try {
+          tags[tag] = await getTag(website, int.tryParse(tag));
+        } catch (err) {
+          tags[tag] = null;
+        }
       }
-
-      article.categories.add(tags[tag]!);
+      if (tags[tag] != null) {
+        article.categories.add(tags[tag]!);
+      }
     }
 
     articles.add(article);
@@ -86,7 +95,8 @@ Future<List<Article>> getPosts(String website) async {
   return Future.value(articles);
 }
 
-Future<Tuple2<List<Article>, List<dynamic>>> getPostsFromSources(List<Uri> sources) async {
+Future<Tuple2<List<Article>, List<dynamic>>> getPostsFromSources(
+    List<Uri> sources) async {
   var errors = [];
 
   var requests = await Future.wait(
@@ -101,7 +111,7 @@ Future<Tuple2<List<Article>, List<dynamic>>> getPostsFromSources(List<Uri> sourc
   );
   var flat = requests.expand((i) => i).toList();
   flat.sort((a, b) => b.date!.compareTo(a.date!));
-  if(sources.length == errors.length) {
+  if (sources.length == errors.length) {
     return Future.error(errors);
   }
 
