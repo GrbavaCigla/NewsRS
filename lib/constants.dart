@@ -6,8 +6,9 @@ const kPageInset = kFloatingAppBarMargin - kCardMargin;
 const kIsAppBarBottom = true;
 const kDefaultSources = [
   'https://www.krik.rs',
-  'https://www.istinomer.rs',
-  'https://www.nova.rs',
+  // 'https://www.istinomer.rs',
+  // 'https://www.nova.rs',
+  // 'https://rs.n1info.com',
 ];
 
 // FloatingAppBar

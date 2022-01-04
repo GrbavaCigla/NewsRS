@@ -70,8 +70,8 @@ Future<List<Article>> getPosts(String website) async {
       } catch (err) {
         authors[article.author] = null;
       }
-      article.author = authors[article.author];
     }
+    article.author = authors[article.author];
 
     var articleTags = List.from(article.categories);
     article.categories.clear();
