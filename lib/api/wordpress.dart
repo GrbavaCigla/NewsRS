@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:tuple/tuple.dart';
 
+import 'package:newsrs/constants.dart';
 import 'package:newsrs/api/exception.dart';
 import 'package:newsrs/models/article.dart';
 
@@ -38,8 +39,12 @@ Future<String?> getTag(String website, int? id) async {
   return Future.value(jsonDecode(response.body)['name']);
 }
 
-Future<List<Article>> getPosts(String website) async {
-  var url = Uri.parse(website + '/wp-json/wp/v2/posts');
+Future<List<Article>> getPosts(
+  String website, {
+  int page = 1,
+  int pageSize = kDefaultPageSize,
+}) async {
+  var url = Uri.parse(website + '/wp-json/wp/v2/posts?page=$page');
 
   http.Response? response;
   try {
@@ -96,12 +101,15 @@ Future<List<Article>> getPosts(String website) async {
 }
 
 Future<Tuple2<List<Article>, List<dynamic>>> getPostsFromSources(
-    List<Uri> sources) async {
+  List<Uri> sources, {
+  int page = 1,
+  int pageSize = kDefaultPageSize,
+}) async {
   var errors = [];
 
   var requests = await Future.wait(
     sources.map(
-      (e) => getPosts(e.toString()).catchError(
+      (e) => getPosts(e.toString(), page: page).catchError(
         (err) {
           errors.add(err);
           return <Article>[];

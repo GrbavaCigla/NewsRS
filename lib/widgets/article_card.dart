@@ -88,7 +88,7 @@ class ArticleCard extends StatelessWidget {
                                 ? ''
                                 : timeago.format(
                                     article.date!,
-                                    locale: "en_short",
+                                    locale: 'en_short',
                                   ),
                             textAlign: TextAlign.end,
                             style: Theme.of(context).textTheme.bodyText2,

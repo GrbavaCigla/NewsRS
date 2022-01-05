@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 const kBorderRadius = 12.0;
 const kPageInset = kFloatingAppBarMargin - kCardMargin;
 const kIsAppBarBottom = true;
+const kDefaultPageSize = 10;
 const kDefaultSources = [
   'https://www.krik.rs',
   // 'https://www.istinomer.rs',

@@ -27,9 +27,9 @@ class Article {
   factory Article.fromJson(Map<String, dynamic> json) {
     // Check if ACF plugin is used because if it is, text will be empty
     String text = json['content']['rendered'];
-    if (text.isEmpty && json.containsKey("acf")) {
+    if (text.isEmpty && json.containsKey('acf')) {
       // TODO: This isn't the best solution, should become better with more acf examples
-      text = getTextFromJson(json["acf"]);
+      text = getTextFromJson(json['acf']);
     }
 
     return Article(

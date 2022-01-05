@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:tuple/tuple.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 import 'package:newsrs/api/wordpress.dart';
 import 'package:newsrs/constants.dart';
@@ -51,38 +52,47 @@ class _HomePageState extends State<HomePage> {
       ),
       body: FutureBuilder<Tuple2<List<Article>, List<dynamic>>>(
         future: _feedFuture,
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return Center(
-              child: Text('Something went wrong: ${snapshot.error}'),
-            );
-          } else if (snapshot.hasData) {
-            return ListView(
-              shrinkWrap: true,
-              physics: const BouncingScrollPhysics(),
-              children: snapshot.data!.item1
-                  .map<Widget>(
-                    (e) => ArticleCard(article: e),
-                  )
-                  .toList()
-                ..insert(
-                  DynamicSettings.of(context).isAppBarBottom
-                      ? snapshot.data!.item1.length
-                      : 0,
-                  const SizedBox(
-                    height: kToolbarHeight + 2 * kFloatingAppBarMargin,
-                  ),
-                )
-                ..insertAll(
-                  0,
-                  snapshot.data!.item2.map((e) => ErrorCard(error: e)),
-                ),
-            );
-          } else {
-            return const Center(child: CircularProgressIndicator());
-          }
-        },
+        builder: _feedBuilder,
       ),
+    );
+  }
+
+  Widget _feedBuilder(BuildContext context,
+      AsyncSnapshot<Tuple2<List<Article>, List<dynamic>>> snapshot) {
+    if (snapshot.hasError) {
+      return Center(
+        child: Text('Something went wrong: ${snapshot.error}'),
+      );
+    } else if (snapshot.hasData) {
+      return _scrollBuilder(snapshot, context);
+    } else {
+      return const Center(child: CircularProgressIndicator());
+    }
+  }
+
+  ListView _scrollBuilder(
+      AsyncSnapshot<Tuple2<List<Article>, List<dynamic>>> snapshot,
+      BuildContext context) {
+    return ListView(
+      shrinkWrap: true,
+      physics: const BouncingScrollPhysics(),
+      children: snapshot.data!.item1
+          .map<Widget>(
+            (e) => ArticleCard(article: e),
+          )
+          .toList()
+        ..insert(
+          DynamicSettings.of(context).isAppBarBottom
+              ? snapshot.data!.item1.length
+              : 0,
+          const SizedBox(
+            height: kToolbarHeight + 2 * kFloatingAppBarMargin,
+          ),
+        )
+        ..insertAll(
+          0,
+          snapshot.data!.item2.map((e) => ErrorCard(error: e)),
+        ),
     );
   }
 }
