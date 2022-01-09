@@ -1,12 +1,12 @@
 TODO:
 - Persistant settings
 - Pull to refresh
-- Infinite scroll
 - Logo
 - Add source dialog duplicate error UI
 - Better source validation
 - Error messages
 - Save post
+- Make links work
 - Progress bar
 - Skeleton loading
 - Filter by category, author, source...
@@ -14,6 +14,7 @@ TODO:
 - Localization
 - Better article cards
 
+- ~~Infinite scroll~~ partially done (should have bottom padding when isAppBarBottom is true)
 - ~~Better error handling~~
 - ~~Article body~~
 - ~~Add icons to source cards~~
