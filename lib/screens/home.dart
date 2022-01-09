@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
+
 import 'package:newsrs/widgets/feed_scroll.dart';
-
-import 'package:tuple/tuple.dart';
-import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-
 import 'package:newsrs/api/wordpress.dart';
 import 'package:newsrs/constants.dart';
 import 'package:newsrs/models/article.dart';
-import 'package:newsrs/widgets/error_card.dart';
 import 'package:newsrs/widgets/article_card.dart';
 import 'package:newsrs/screens/home/drawer.dart';
 import 'package:newsrs/widgets/custom_scaffold.dart';
@@ -44,6 +40,9 @@ class _HomePageState extends State<HomePage> {
         actions: const [ThemeToggleButton()],
       ),
       body: FeedScroll<Article?>(
+        edgeOffset: DynamicSettings.of(context).isAppBarBottom
+            ? 0
+            : kToolbarHeight + kFloatingAppBarMargin,
         builder: _feedBuilder,
         future: _feedFuture,
       ),

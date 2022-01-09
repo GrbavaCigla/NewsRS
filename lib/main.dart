@@ -33,7 +33,10 @@ class NewsRSApp extends StatelessWidget {
           title: 'NewsRS',
           theme: lightTheme,
           darkTheme: darkTheme,
-          home: const HomePage(),
+          home: ScrollConfiguration(
+            behavior: const ScrollBehavior().copyWith(overscroll: false),
+            child: const HomePage(),
+          ),
         ),
       ),
     );

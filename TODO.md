@@ -1,6 +1,5 @@
 TODO:
 - Persistant settings
-- Pull to refresh
 - Logo
 - Add source dialog duplicate error UI
 - Better source validation
@@ -14,6 +13,7 @@ TODO:
 - Localization
 - Better article cards
 
+- ~~Pull to refresh~~
 - ~~Infinite scroll~~ partially done (should have bottom padding when isAppBarBottom is true)
 - ~~Better error handling~~
 - ~~Article body~~
