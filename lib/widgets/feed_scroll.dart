@@ -45,9 +45,7 @@ class _FeedScrollState<T> extends State<FeedScroll<T>> {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       edgeOffset: widget.edgeOffset ?? 0.0,
-      onRefresh: () async {
-        _pagingController.refresh();
-      },
+      onRefresh: () async => _pagingController.refresh(),
       child: PagedListView(
         pagingController: _pagingController,
         builderDelegate: PagedChildBuilderDelegate<T>(

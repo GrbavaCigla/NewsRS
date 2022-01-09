@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_html/flutter_html.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'package:newsrs/constants.dart';
 import 'package:newsrs/models/article.dart';
@@ -29,8 +30,7 @@ class ArticlePage extends StatelessWidget {
       ),
       isAppBarBottom: DynamicSettings.of(context).isAppBarBottom,
       body: SingleChildScrollView(
-        physics:
-            const BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             SizedBox(
@@ -59,7 +59,18 @@ class ArticlePage extends StatelessWidget {
                 ),
               ),
             ),
-            Html(data: article.text),
+            Html(
+              data: article.text,
+              onLinkTap: (link, context, attributes, element) async {
+                // TODO: Add some kind of error handling
+                // TODO: Check if same website or website in sources
+                if (link != null) {
+                  if (await canLaunch(link)) {
+                    launch(link);
+                  }
+                }
+              },
+            ),
             SizedBox(
               height: (kToolbarHeight + 2 * kFloatingAppBarMargin) *
                   (DynamicSettings.of(context).isAppBarBottom ? 1 : 0),

@@ -5,7 +5,6 @@ TODO:
 - Better source validation
 - Error messages
 - Save post
-- Make links work
 - Progress bar
 - Skeleton loading
 - Filter by category, author, source...
@@ -13,6 +12,7 @@ TODO:
 - Localization
 - Better article cards
 
+- ~~Make links work~~ doesn't work on iOS, i don't own iphone or mac
 - ~~Pull to refresh~~
 - ~~Infinite scroll~~ partially done (should have bottom padding when isAppBarBottom is true)
 - ~~Better error handling~~

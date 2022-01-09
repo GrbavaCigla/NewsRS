@@ -33,9 +33,7 @@ class _HomePageState extends State<HomePage> {
         leading: IconButton(
           splashRadius: kIconButtonSplashRadius,
           icon: const Icon(Icons.dehaze_rounded),
-          onPressed: () {
-            _scaffoldKey.currentState!.openDrawer();
-          },
+          onPressed: () => _scaffoldKey.currentState!.openDrawer(),
         ),
         actions: const [ThemeToggleButton()],
       ),
@@ -51,13 +49,11 @@ class _HomePageState extends State<HomePage> {
 
   Widget _feedBuilder(BuildContext context, Article? item, int index) {
     if (item == null) {
-      if (DynamicSettings.of(context).isAppBarBottom) {
-        return Container();
-      } else {
-        return const SizedBox(
-          height: kToolbarHeight + 2 * kFloatingAppBarMargin,
-        );
-      }
+      return SizedBox(
+        height: DynamicSettings.of(context).isAppBarBottom
+            ? 0
+            : kToolbarHeight + 2 * kFloatingAppBarMargin,
+      );
     } else {
       return ArticleCard(article: item);
     }
