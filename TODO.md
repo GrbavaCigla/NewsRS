@@ -5,13 +5,14 @@ TODO:
 - Better source validation
 - Error messages
 - Save post
-- Progress bar
 - Skeleton loading
 - Filter by category, author, source...
 - Prefetching some of sources date (tags...)
 - Localization
+- Rewrite settings
 - Better article cards
 
+- ~~Progress bar~~
 - ~~Make links work~~ doesn't work on iOS, i don't own iphone or mac
 - ~~Pull to refresh~~
 - ~~Infinite scroll~~ partially done (should have bottom padding when isAppBarBottom is true)

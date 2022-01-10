@@ -5,15 +5,18 @@ const kBorderRadius = 12.0;
 const kPageInset = kFloatingAppBarMargin - kCardMargin;
 const kIsAppBarBottom = true;
 const kDefaultPageSize = 10;
+const kClipAntiAlias = Clip.hardEdge;
 const kDefaultSources = [
   'https://www.krik.rs',
   // 'https://www.istinomer.rs',
   // 'https://www.nova.rs',
   // 'https://rs.n1info.com',
+  // 'https://faktograf.hr'
 ];
 
 // FloatingAppBar
 const kFloatingAppBarMargin = 16.0;
+const kFloatingAppBarProgressHeight = 4.0;
 const kFloatingAppBarBorderRadius = kBorderRadius;
 
 // Card

@@ -29,6 +29,7 @@ class _DynamicSettingsState extends State<DynamicSettings> {
         () => _isAppBarBottom = newValue,
       );
 
+  // TODO: Remove source from settings
   set sources(Set<Uri> newValue) => setState(
         () => _sources = newValue,
       );

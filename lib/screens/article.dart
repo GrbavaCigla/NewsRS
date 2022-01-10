@@ -15,21 +15,25 @@ import 'package:newsrs/widgets/theme_toggle_button.dart';
 class ArticlePage extends StatelessWidget {
   final Article article;
 
-  const ArticlePage({
-    required this.article,
+  ArticlePage({
     Key? key,
+    required this.article,
   }) : super(key: key);
+
+  final ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-      appBar: const FloatingAppBar(
-        title: Text('NewsRS'),
+      appBar: FloatingAppBar(
+        title: const Text('NewsRS'),
         centerTitle: true,
-        actions: [ThemeToggleButton()],
+        scrollController: _scrollController,
+        actions: const [ThemeToggleButton()],
       ),
       isAppBarBottom: DynamicSettings.of(context).isAppBarBottom,
       body: SingleChildScrollView(
+        controller: _scrollController,
         physics: const BouncingScrollPhysics(),
         child: Column(
           children: [

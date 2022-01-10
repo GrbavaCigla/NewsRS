@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
-import 'package:newsrs/constants.dart';
-import 'package:newsrs/widgets/settings.dart';
-
 class FeedScroll<T> extends StatefulWidget {
   final Future<List<T>> Function(int page) future;
   final Widget Function(BuildContext context, T item, int index) builder;
