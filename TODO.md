@@ -10,8 +10,8 @@ TODO:
 - Prefetching some of sources date (tags...)
 - Localization
 - Rewrite settings
-- Better article cards
 
+- ~~Better article cards~~
 - ~~Progress bar~~
 - ~~Make links work~~ doesn't work on iOS, i don't own iphone or mac
 - ~~Pull to refresh~~

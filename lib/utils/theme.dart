@@ -101,7 +101,7 @@ var lightTheme = ThemeData(
   toggleableActiveColor: kFrostColors[1],
   primarySwatch: primarySwatch,
   colorScheme: ColorScheme.fromSwatch(
-    accentColor: kFrostColors[2],
+    accentColor: kFrostColors[3], // TODO: This may be changed, was kFrostColors[2]
     brightness: Brightness.light,
     primarySwatch: primarySwatch,
     backgroundColor: kSnowStormColors[2],

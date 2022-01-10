@@ -27,6 +27,9 @@ const kCardMargin = 4.0;
 const kArticleCardPadding = 8.0;
 const kArticleCardImageFlex = 2;
 const kArticleCardTextFlex = 5;
+const kArticleCardTextOpacity = 0.7;
+const kArticleCardTextSpacing = 4.0;
+const kArticleCardSeparator = ' • ';
 
 // CardTiles
 const kCardTileBorderRadius = kCardBorderRadius;
