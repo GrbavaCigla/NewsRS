@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:newsrs/constants.dart';
+import 'package:svarog/constants.dart';
 
 class CardListTile extends StatelessWidget {
   final Widget? leading;

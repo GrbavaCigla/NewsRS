@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-import 'package:newsrs/constants.dart';
-import 'package:newsrs/dialogs/add_source.dart';
-import 'package:newsrs/widgets/drawer_section.dart';
-import 'package:newsrs/widgets/settings.dart';
-import 'package:newsrs/widgets/source_card.dart';
-import 'package:newsrs/widgets/tiles/card_list_tile.dart';
-import 'package:newsrs/widgets/tiles/card_switch_tile.dart';
+import 'package:svarog/constants.dart';
+import 'package:svarog/dialogs/add_source.dart';
+import 'package:svarog/widgets/drawer_section.dart';
+import 'package:svarog/widgets/settings.dart';
+import 'package:svarog/widgets/source_card.dart';
+import 'package:svarog/widgets/tiles/card_list_tile.dart';
+import 'package:svarog/widgets/tiles/card_switch_tile.dart';
 
-class NewsRSDrawer extends StatelessWidget {
-  const NewsRSDrawer({Key? key}) : super(key: key);
+class SvarogDrawer extends StatelessWidget {
+  const SvarogDrawer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

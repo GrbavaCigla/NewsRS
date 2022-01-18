@@ -4,9 +4,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_html/shims/dart_ui_real.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
-import 'package:newsrs/constants.dart';
-import 'package:newsrs/models/article.dart';
-import 'package:newsrs/screens/article.dart';
+import 'package:svarog/constants.dart';
+import 'package:svarog/models/article.dart';
+import 'package:svarog/screens/article.dart';
 
 class ArticleCard extends StatelessWidget {
   final Article article;

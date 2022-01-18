@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:newsrs/constants.dart';
+import 'package:svarog/constants.dart';
 
 class TagChip extends StatelessWidget {
   final String tag;

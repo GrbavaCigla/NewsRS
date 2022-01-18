@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:newsrs/widgets/settings.dart';
+import 'package:svarog/widgets/settings.dart';
 
 class AddSourceDialog extends StatefulWidget {
   const AddSourceDialog({Key? key}) : super(key: key);

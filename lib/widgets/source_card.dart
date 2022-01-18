@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 
-import 'package:newsrs/constants.dart';
-import 'package:newsrs/widgets/settings.dart';
-import 'package:newsrs/widgets/tiles/card_list_tile.dart';
+import 'package:svarog/constants.dart';
+import 'package:svarog/widgets/settings.dart';
+import 'package:svarog/widgets/tiles/card_list_tile.dart';
 
 class SourceCard extends StatelessWidget {
   final Uri source;

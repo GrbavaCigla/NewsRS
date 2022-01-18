@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-import 'package:newsrs/widgets/feed_scroll.dart';
-import 'package:newsrs/api/wordpress.dart';
-import 'package:newsrs/constants.dart';
-import 'package:newsrs/models/article.dart';
-import 'package:newsrs/widgets/article_card.dart';
-import 'package:newsrs/screens/home/drawer.dart';
-import 'package:newsrs/widgets/custom_scaffold.dart';
-import 'package:newsrs/widgets/floating_app_bar.dart';
-import 'package:newsrs/widgets/settings.dart';
-import 'package:newsrs/widgets/theme_toggle_button.dart';
+import 'package:svarog/widgets/feed_scroll.dart';
+import 'package:svarog/api/wordpress.dart';
+import 'package:svarog/constants.dart';
+import 'package:svarog/models/article.dart';
+import 'package:svarog/widgets/article_card.dart';
+import 'package:svarog/screens/home/drawer.dart';
+import 'package:svarog/widgets/custom_scaffold.dart';
+import 'package:svarog/widgets/floating_app_bar.dart';
+import 'package:svarog/widgets/settings.dart';
+import 'package:svarog/widgets/theme_toggle_button.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -25,10 +25,10 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return CustomScaffold(
       scaffoldKey: _scaffoldKey,
-      drawer: const NewsRSDrawer(),
+      drawer: const SvarogDrawer(),
       isAppBarBottom: DynamicSettings.of(context).isAppBarBottom,
       appBar: FloatingAppBar(
-        title: const Text('NewsRS'),
+        title: const Text('Svarog'),
         centerTitle: true,
         leading: IconButton(
           splashRadius: kIconButtonSplashRadius,

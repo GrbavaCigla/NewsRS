@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 
 import 'package:adaptive_theme/adaptive_theme.dart';
 
-import 'package:newsrs/utils/theme.dart';
-import 'package:newsrs/screens/home.dart';
-import 'package:newsrs/widgets/settings.dart';
+import 'package:svarog/utils/theme.dart';
+import 'package:svarog/screens/home.dart';
+import 'package:svarog/widgets/settings.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   final savedThemeMode = await AdaptiveTheme.getThemeMode();
 
-  runApp(NewsRSApp(savedThemeMode: savedThemeMode));
+  runApp(SvarogApp(savedThemeMode: savedThemeMode));
 }
 
-class NewsRSApp extends StatelessWidget {
+class SvarogApp extends StatelessWidget {
   final AdaptiveThemeMode? savedThemeMode;
 
-  const NewsRSApp({
+  const SvarogApp({
     Key? key,
     this.savedThemeMode = AdaptiveThemeMode.system,
   }) : super(key: key);
@@ -30,7 +30,7 @@ class NewsRSApp extends StatelessWidget {
         dark: darkTheme,
         initial: savedThemeMode ?? AdaptiveThemeMode.system,
         builder: (lightTheme, darkTheme) => MaterialApp(
-          title: 'NewsRS',
+          title: 'Svarog',
           theme: lightTheme,
           darkTheme: darkTheme,
           home: ScrollConfiguration(

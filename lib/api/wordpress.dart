@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:tuple/tuple.dart';
 
-import 'package:newsrs/constants.dart';
-import 'package:newsrs/api/exception.dart';
-import 'package:newsrs/models/article.dart';
+import 'package:svarog/constants.dart';
+import 'package:svarog/api/exception.dart';
+import 'package:svarog/models/article.dart';
 
 // TODO: Cache everything
 

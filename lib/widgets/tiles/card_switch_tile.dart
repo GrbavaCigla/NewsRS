@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:newsrs/constants.dart';
+import 'package:svarog/constants.dart';
 
 class CardSwitchListTile extends StatelessWidget {
   final bool value;

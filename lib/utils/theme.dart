@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:newsrs/constants.dart';
-import 'package:newsrs/utils/color.dart';
-import 'package:newsrs/utils/swatch.dart';
+import 'package:svarog/constants.dart';
+import 'package:svarog/utils/color.dart';
+import 'package:svarog/utils/swatch.dart';
 
 var primarySwatch = generateMaterialColor(kFrostColors[3]);
 

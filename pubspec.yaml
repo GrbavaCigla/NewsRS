@@ -1,5 +1,5 @@
-name: newsrs
-description: A new Flutter project.
+name: svarog
+description: News app that fetches data from multiple sources.
 
 publish_to: "none"
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:newsrs/constants.dart';
-import 'package:newsrs/widgets/settings.dart';
+import 'package:svarog/constants.dart';
+import 'package:svarog/widgets/settings.dart';
 
 // Taken from https://flutteragency.com/custom-appbar-widget/
 class FloatingAppBar extends StatefulWidget implements PreferredSizeWidget {

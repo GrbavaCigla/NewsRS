@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:adaptive_theme/adaptive_theme.dart';
-import 'package:newsrs/constants.dart';
+import 'package:svarog/constants.dart';
 
 class ThemeToggleButton extends StatefulWidget {
   const ThemeToggleButton({Key? key}) : super(key: key);

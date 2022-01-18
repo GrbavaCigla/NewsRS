@@ -4,12 +4,12 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:newsrs/constants.dart';
-import 'package:newsrs/models/article.dart';
-import 'package:newsrs/widgets/custom_scaffold.dart';
-import 'package:newsrs/widgets/floating_app_bar.dart';
-import 'package:newsrs/widgets/settings.dart';
-import 'package:newsrs/widgets/theme_toggle_button.dart';
+import 'package:svarog/constants.dart';
+import 'package:svarog/models/article.dart';
+import 'package:svarog/widgets/custom_scaffold.dart';
+import 'package:svarog/widgets/floating_app_bar.dart';
+import 'package:svarog/widgets/settings.dart';
+import 'package:svarog/widgets/theme_toggle_button.dart';
 
 // TODO: Add more information
 class ArticlePage extends StatelessWidget {
@@ -26,7 +26,7 @@ class ArticlePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScaffold(
       appBar: FloatingAppBar(
-        title: const Text('NewsRS'),
+        title: const Text('Svarog'),
         centerTitle: true,
         scrollController: _scrollController,
         actions: const [ThemeToggleButton()],

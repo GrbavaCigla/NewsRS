@@ -1,4 +1,4 @@
-# NewsRS
+# Svarog
 
 News app written in Dart/Flutter with configurable sources.
 

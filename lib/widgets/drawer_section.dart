@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:newsrs/constants.dart';
+import 'package:svarog/constants.dart';
 
 class DrawerSection extends StatelessWidget {
   final String title;

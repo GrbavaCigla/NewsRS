@@ -1,7 +1,7 @@
 import 'package:html_unescape/html_unescape_small.dart';
 
-import 'package:newsrs/utils/image_search.dart';
-import 'package:newsrs/utils/text_search.dart';
+import 'package:svarog/utils/image_search.dart';
+import 'package:svarog/utils/text_search.dart';
 
 class Article {
   String? title;
