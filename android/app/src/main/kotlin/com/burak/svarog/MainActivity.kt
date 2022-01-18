@@ -1,4 +1,4 @@
-package tk.grbavacigla.newsrs.newsrs
+package com.burak.svarog
 
 import io.flutter.embedding.android.FlutterActivity
 
