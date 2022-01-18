@@ -30,3 +30,7 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  fonts:
+    - family: ComicRunes
+      fonts:
+        - asset: assets/fonts/comic-runes.regular.otf

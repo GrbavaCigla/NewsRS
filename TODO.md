@@ -10,6 +10,7 @@ TODO:
 - Prefetching some of sources date (tags...)
 - Localization
 - Rewrite settings
+- Add RSS support
 
 - ~~Better article cards~~
 - ~~Progress bar~~

@@ -26,7 +26,13 @@ class ArticlePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScaffold(
       appBar: FloatingAppBar(
-        title: const Text('Svarog'),
+        title: const Text(
+          'Svarog',
+          style: TextStyle(
+            fontFamily: 'ComicRunes',
+            fontSize: 24,
+          ),
+        ),
         centerTitle: true,
         scrollController: _scrollController,
         actions: const [ThemeToggleButton()],

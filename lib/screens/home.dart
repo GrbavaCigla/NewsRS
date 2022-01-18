@@ -28,7 +28,13 @@ class _HomePageState extends State<HomePage> {
       drawer: const SvarogDrawer(),
       isAppBarBottom: DynamicSettings.of(context).isAppBarBottom,
       appBar: FloatingAppBar(
-        title: const Text('Svarog'),
+        title: const Text(
+          'Svarog',
+          style: TextStyle(
+            fontFamily: 'ComicRunes',
+            fontSize: 24,
+          ),
+        ),
         centerTitle: true,
         leading: IconButton(
           splashRadius: kIconButtonSplashRadius,
