@@ -1,6 +1,5 @@
 TODO:
-- Persistant settings
-- Logo
+- Divide number of loading posts between sources
 - Add source dialog duplicate error UI
 - Better source validation
 - Error messages
@@ -9,9 +8,11 @@ TODO:
 - Filter by category, author, source...
 - Prefetching some of sources date (tags...)
 - Localization
-- Rewrite settings
 - Add RSS support
 
+- ~~Logo~~
+- ~~Rewrite settings~~ Not needed
+- ~~Persistant settings~~
 - ~~Better article cards~~
 - ~~Progress bar~~
 - ~~Make links work~~ doesn't work on iOS, i don't own iphone or mac

@@ -16,10 +16,6 @@ class SourceCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: Optimize this
-    Set<Uri> newSource = Set.from(DynamicSettings.of(context).sources);
-    newSource.remove(source);
-
     return CardListTile(
       color: Theme.of(context).backgroundColor,
       title: Text(source.host),
@@ -40,9 +36,15 @@ class SourceCard extends StatelessWidget {
       trailing: IconButton(
         splashRadius: kSourceCardSplashRadius,
         color: Theme.of(context).colorScheme.error,
-        onPressed: () => DynamicSettings.of(context).sources = newSource,
+        onPressed: () => _onDelete(context),
         icon: const Icon(Icons.delete_rounded),
       ),
     );
+  }
+
+  void _onDelete(BuildContext context) {
+    Set<Uri> newSource = Set.from(DynamicSettings.of(context).sources);
+    newSource.remove(source);
+    DynamicSettings.of(context).sources = newSource;
   }
 }

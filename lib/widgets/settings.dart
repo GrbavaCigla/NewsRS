@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:svarog/constants.dart';
+import 'package:tuple/tuple.dart';
 
-// TODO: Add SharedPrefs and add more values
 class DynamicSettings extends StatefulWidget {
   final Widget child;
+  final Tuple2<bool, Set<Uri>> initial;
 
   const DynamicSettings({
     Key? key,
     required this.child,
+    required this.initial,
   }) : super(key: key);
 
   static _DynamicSettingsState of(BuildContext context) =>
@@ -19,20 +22,35 @@ class DynamicSettings extends StatefulWidget {
 }
 
 class _DynamicSettingsState extends State<DynamicSettings> {
-  bool _isAppBarBottom = kIsAppBarBottom;
-  Set<Uri> _sources = kDefaultSources.map((e) => Uri.parse(e)).toSet();
+  late bool _isAppBarBottom = widget.initial.item1;
+  late Set<Uri> _sources = widget.initial.item2;
 
   bool get isAppBarBottom => _isAppBarBottom;
   Set<Uri> get sources => _sources;
 
-  set isAppBarBottom(bool newValue) => setState(
-        () => _isAppBarBottom = newValue,
-      );
+  set isAppBarBottom(bool newValue) {
+    setState(
+      () => _isAppBarBottom = newValue,
+    );
+
+    SharedPreferences.getInstance().then(
+      (value) => value.setBool("isAppBarBottom", newValue),
+    );
+  }
 
   // TODO: Remove source from settings
-  set sources(Set<Uri> newValue) => setState(
-        () => _sources = newValue,
-      );
+  set sources(Set<Uri> newValue) {
+    setState(
+      () => _sources = newValue,
+    );
+
+    SharedPreferences.getInstance().then(
+      (value) => value.setStringList(
+        "sources",
+        newValue.map((e) => e.toString()).toList(),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
